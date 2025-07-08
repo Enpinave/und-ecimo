@@ -3,9 +3,9 @@
 Este proyecto fue desarrollado como parte de la clase de programación con Flet.
 
 ## 📌 Integrantes del grupo
-- Ana Torres
-- Juan Pérez
-- Camila Moreno
+- Jhonatan Medina
+- Fernando Cardenas
+- David Melgarejo
 
 ## 🚀 Requisitos
 
