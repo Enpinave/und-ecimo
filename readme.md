@@ -3,9 +3,9 @@
 Este proyecto fue desarrollado como parte de la clase de programación con Flet.
 
 ## 📌 Integrantes del grupo
-- Jhonatan Medina
-- Fernando Cardenas
-- David Melgarejo
+- Juanito Alimaña
+- Pedro Navaja
+- Hector lavoe 
 
 ## 🚀 Requisitos
 
