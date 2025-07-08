@@ -2,7 +2,7 @@ import flet as ft
 
 def main(page: ft.Page):
     page.title = "App"
-    
+
     # Elementos iniciales
     t = ft.TextField(label="Ingrese su nombre")
     salida = ft.Text()
