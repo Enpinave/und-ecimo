@@ -1,55 +1,57 @@
 import flet as ft
 
 def main(page: ft.Page):
-    page.title = "App de Saludos"
+    # Configuración de la página
+    page.title = "🎈 Saludos App"
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
-    saludo_contador = 0
+    page.bgcolor = ft.colors.CYAN_100  # Fondo claro y colorido
 
-    # Mensaje inicial
-    bienvenida = ft.Text("👋 ¡Bienvenido a la App de Saludos!", size=20, weight=ft.FontWeight.BOLD)
+    # Campo de entrada con estilo
+    t = ft.TextField(
+        label="📝 Escribe tu nombre",
+        width=300,
+        border_color=ft.colors.TEAL,
+        filled=True,
+        fill_color=ft.colors.TEAL_50,
+    )
 
-    # Campo de entrada
-    t = ft.TextField(label="Ingrese su nombre", autofocus=True, width=300)
+    # Texto de salida
+    salida = ft.Text(size=20, weight=ft.FontWeight.BOLD)
 
-    # Mensaje de salida
-    salida = ft.Text(size=18)
+    # Botón con color y emoji
+    b = ft.ElevatedButton(
+        text="Saludar 👋",
+        on_click=lambda e: saludar(e),
+        color=ft.colors.WHITE,
+        bgcolor=ft.colors.TEAL_400
+    )
 
-    # Etiqueta de contador
-    contador = ft.Text("Saludos hechos: 0", size=14, italic=True)
-
-    # Función para saludar
-    def click(e):
-        nonlocal saludo_contador
+    def saludar(e):
         name = t.value.strip()
         if name == "":
-            salida.value = "⚠️ Campo vacío. Por favor escriba su nombre."
+            salida.value = "⚠️ ¡Campo vacío!"
+            salida.color = ft.colors.RED
         else:
-            saludo_contador += 1
-            salida.value = f"Hola {name} 👋"
-            contador.value = f"Saludos hechos: {saludo_contador}"
+            salida.value = f"🎉 ¡Hola, {name}!"
+            salida.color = ft.colors.TEAL
         page.update()
 
-    # Función para limpiar
-    def limpiar(e):
-        nonlocal saludo_contador
-        t.value = ""
-        salida.value = ""
-        saludo_contador = 0
-        contador.value = "Saludos hechos: 0"
-        page.update()
-
-    # Botones
-    b_saludar = ft.ElevatedButton("Saludar", on_click=click)
-    b_limpiar = ft.OutlinedButton("Limpiar", on_click=limpiar)
-
-    # Agregar a la página
-    page.add(
-        bienvenida,
-        t,
-        ft.Row([b_saludar, b_limpiar], spacing=10),
-        salida,
-        contador,
+    # Tarjeta contenedora
+    card = ft.Container(
+        content=ft.Column(
+            controls=[t, b, salida],
+            alignment=ft.MainAxisAlignment.CENTER,
+            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+            spacing=15
+        ),
+        width=350,
+        padding=20,
+        bgcolor=ft.colors.WHITE,
+        border_radius=10,
+        shadow=ft.BoxShadow(blur_radius=10, color=ft.colors.BLACK26, spread_radius=2),
     )
+
+    page.add(card)
 
 ft.app(target=main)
