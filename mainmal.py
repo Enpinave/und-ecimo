@@ -2,17 +2,22 @@ import flet as ft
 
 def main(page: ft.Page):
     page.title = "App"
+    
+    # Elementos iniciales
+    t = ft.TextField(label="Ingresa tu nombre")
+    salida = ft.Text()
+    
     def click(e):
         name = t.value
-        if name == "":
-            page.controls.append(ft.Text("Campo vacío"))
+        if name.strip() == "":
+            salida.value = "⚠️ Campo vacío"
         else:
-            page.controls.append(ft.Text("Hola " + name))
+            salida.value = f"Hola {name}"
         page.update()
-    t = ft.TextField()
+    
     b = ft.ElevatedButton("Saludar", on_click=click)
-    page.controls.append(t)
-    page.controls.append(b)
-    page.update()
+    
+    # Añadir todo a la página
+    page.add(t, b, salida)
 
 ft.app(target=main)
