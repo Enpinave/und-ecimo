@@ -1,0 +1,19 @@
+__pycache__/
+*.pyc
+.env
+# Ignora entorno virtual
+venv/
+ENV/
+env/
+.venv/
+
+# Ignora archivos compilados de Python
+__pycache__/
+*.py[cod]
+
+# Ignora archivos temporales de VS Code
+.vscode/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
