@@ -3,6 +3,7 @@ import flet as ft
 def main(page: ft.Page):
     page.title = "Proyecto de Grupo"
     nombre = ft.TextField(label="Tu nombre")
+    edad = ft.textField(label="tu edad")
     salida = ft.Text()
     
     def saludar(e):
