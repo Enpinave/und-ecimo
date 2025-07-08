@@ -2,9 +2,9 @@ import flet as ft
 
 def mostrar_mensaje(page, nombre):
     if not nombre.strip():
-        mensaje = ft.Text("Por favor, escribe tu nombre.", color="red")
+        mensaje = ft.Text("Por favor, escribe tu nombre.", color="white")
     else:
-        mensaje = ft.Text(f"Hola, {nombre}!", color="green")
+        mensaje = ft.Text(f"Hola, {nombre}!", color="purple")
     page.controls.append(mensaje)
     page.update()
 
