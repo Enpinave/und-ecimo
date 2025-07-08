@@ -1,43 +1,68 @@
 import flet as ft
 
 def main(page: ft.Page):
-    page.title = "Proyecto de Grupo"
+    page.title = "🎓 Proyecto de Grupo"
+    page.bgcolor = ft.colors.CYAN_100  # Fondo general más colorido
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
-    page.bgcolor = ft.colors.WHITE
 
-    nombre = ft.TextField(label="Tu nombre", width=300)
-    edad = ft.TextField(label="Tu edad", width=300)
-    salida = ft.Text(size=18, weight=ft.FontWeight.BOLD)
+    # Campos de entrada con color de fondo
+    nombre = ft.TextField(
+        label="📛 Tu nombre",
+        width=300,
+        bgcolor=ft.colors.WHITE,
+        border_radius=10,
+        border_color=ft.colors.BLUE_300
+    )
+
+    edad = ft.TextField(
+        label="🎂 Tu edad",
+        width=300,
+        bgcolor=ft.colors.WHITE,
+        border_radius=10,
+        border_color=ft.colors.PINK_300
+    )
+
+    salida = ft.Text(size=20)
 
     def saludar(e):
-        salida.value = f"Hola, {nombre.value}! Tienes {edad.value} años."
+        if nombre.value.strip() == "" or edad.value.strip() == "":
+            salida.value = "⚠️ Por favor, completa todos los campos."
+            salida.color = ft.colors.RED
+        else:
+            salida.value = f"👋 ¡Hola, {nombre.value}! 🎉 Tienes {edad.value} años."
+            salida.color = ft.colors.PURPLE
         page.update()
 
     boton = ft.ElevatedButton(
-        "Saludar",
+        text="✨ Saludar 😊",
         on_click=saludar,
-        bgcolor=ft.colors.LIGHT_BLUE_300,
+        bgcolor=ft.colors.DEEP_PURPLE_300,
         color=ft.colors.WHITE,
-        style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=10))
+        style=ft.ButtonStyle(
+            shape=ft.RoundedRectangleBorder(radius=10),
+            elevation=5
+        )
     )
 
+    # Contenedor blanco con borde redondeado
     tarjeta = ft.Container(
         content=ft.Column(
             [
+                ft.Text("🎈 Bienvenido a la app del grupo 🎈", size=25, weight="bold", color=ft.colors.BLUE_900),
                 nombre,
                 edad,
                 boton,
                 salida
             ],
-            spacing=15,
             alignment=ft.MainAxisAlignment.CENTER,
-            horizontal_alignment=ft.CrossAxisAlignment.CENTER
+            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+            spacing=20
         ),
-        padding=20,
-        bgcolor=ft.colors.LIGHT_BLUE_50,
+        padding=30,
+        bgcolor=ft.colors.WHITE,
         border_radius=15,
-        shadow=ft.BoxShadow(blur_radius=10, color=ft.colors.BLUE_100, offset=ft.Offset(2, 2))
+        shadow=ft.BoxShadow(blur_radius=15, color=ft.colors.GREY_500, spread_radius=2)
     )
 
     page.add(tarjeta)
